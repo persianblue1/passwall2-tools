@@ -1,71 +1,70 @@
-# ابزارهای مسیریابی و بکاپ Passwall2 🇮🇷
-
-اسکریپت‌های خودکار برای تنظیم مسیریابی هوشمند در Passwall2، آپدیت امن پایگاه‌های GeoIP/GeoSite، و بکاپ‌گیری/بازگردانی تنظیمات روی OpenWrt.
+Automated scripts for smart routing configuration in Passwall2, secure updates of GeoIP/GeoSite databases, and backup/restore of settings on OpenWrt.
 
 ---
 
-## 📦 فایل‌ها
+## 📦 Files
 
-| نام فایل | توضیح |
-|----------|-------|
-| `setup_passwall2_with_safe_updates_and_backup.sh` | تنظیم قوانین ایران + دانلود امن GeoIP/GeoSite + بکاپ‌گیری روزانه |
-| `restore_passwall2_backup.sh` | بازگردانی بکاپ با منوی انتخابی از آخرین نسخه‌های ذخیره‌شده |
+| File Name | Description |
+|-----------|-------------|
+| `setup_passwall2_with_safe_updates_and_backup.sh` | Sets up Iran-specific routing rules + securely downloads GeoIP/GeoSite + enables daily backups |
+| `restore_passwall2_backup.sh` | Restores backups with a menu to select from the latest saved versions |
 
 ---
 
-## ⚙️ نحوه اجرا
+## ⚙️ How to Use
 
-### ۱. اجرای اسکریپت تنظیم اولیه
-
+### 1. Run the Setup Script
 ```bash
 sh setup_passwall2_with_safe_updates_and_backup.sh
-این اسکریپت:
+```
+This script will:
 
-تنظیم قوانین مسیریابی برای IPها و دامنه‌های ایرانی
+Configure routing rules for Iranian IPs and domains
 
-دانلود پایگاه‌های GeoIP و GeoSite از منبع معتبر
+Securely download GeoIP and GeoSite databases
 
-بکاپ‌گیری از تنظیمات و دیتابیس‌ها
+Create backups of settings and databases
 
-افزودن کران‌جاب روزانه برای آپدیت و بکاپ‌گیری خودکار
+Add a daily cron job for automatic updates and backups
 
-نگه‌داری فقط ۱۰ بکاپ آخر برای صرفه‌جویی در فضا
+Keep only the latest 10 backups to save space
 
-مسیر بکاپ‌ها: /root/passwall2_backups/ مسیر دیتابیس‌ها: /usr/share/passwall2/
+Backup path: /root/passwall2_backups/
+Database path: /usr/share/passwall2/
 
-🔁 بازگردانی بکاپ
-برای بازگردانی یکی از بکاپ‌های قبلی:
-
-bash
+🔁 Restore from Backup
+To restore a previous backup:
+```bash
 sh restore_passwall2_backup.sh
-سپس لیستی از بکاپ‌های موجود نمایش داده می‌شود. با وارد کردن شماره، تنظیمات و دیتابیس‌ها بازگردانی شده و سرویس Passwall2 ری‌استارت می‌شود.
+```
+A list of available backups will be shown. Enter the number to restore settings and databases. The Passwall2 service will automatically restart.
 
-🧠 نکات مهم
-اگر دانلود GeoIP یا GeoSite ناموفق باشد، نسخهٔ قبلی حفظ می‌شود تا سرویس قطع نشود.
+🧠 Key Notes
+If GeoIP or GeoSite download fails, the previous version will be preserved to avoid service disruption.
 
-قوانین زیر برای ترافیک ایران به‌صورت مستقیم تنظیم می‌شوند:
+The following rules are applied to route Iranian traffic directly:
 
-IPهای ایران (GeoIP)
+Iranian IPs (GeoIP)
 
-دامنه‌های ایرانی (GeoSite)
+Iranian domains (GeoSite)
 
-دامنه‌هایی با پسوند .ir (Regex)
+Domains ending in .ir (Regex)
 
-باقی ترافیک از طریق نود پیش‌فرض (مثلاً VPN) هدایت می‌شود.
+All other traffic is routed through the default node (e.g., VPN).
 
-📜 پیش‌نیازها
-OpenWrt با نصب luci-app-passwall2
+📜 Requirements
+OpenWrt with luci-app-passwall2 installed
 
-فعال بودن سرویس passwall2
+Passwall2 service must be active
 
-دسترسی root برای اجرای اسکریپت‌ها
+Root access to run scripts
 
-نصب curl و tar (در اکثر نسخه‌های OpenWrt موجود است)
+curl and tar installed (usually available in OpenWrt)
 
-🧰 توسعه‌دهنده
+🧰 Developer
 GitHub: persianblue1
 
-مخزن: passwall-routing-and-backup
+Repository: passwall-routing-and-backup
 
-📬 پیشنهاد یا مشکل؟
-اگر پیشنهادی برای بهبود اسکریپت‌ها یا مشکلی در اجرا دارید، لطفاً در بخش Issues همین مخزن مطرح
+📬 Suggestions or Issues?
+If you have ideas to improve the scripts or encounter any issues, feel free to open an Issue in the repository.
