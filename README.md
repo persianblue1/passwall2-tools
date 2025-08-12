@@ -17,7 +17,7 @@
 
 ### ۱. اجرای اسکریپت تنظیم اولیه
 
-```bash
+``` bash
 sh setup_passwall2_with_safe_updates_and_backup.sh
 این اسکریپت:
 
