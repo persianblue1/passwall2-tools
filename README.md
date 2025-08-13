@@ -19,11 +19,13 @@ Apply initial configuration
 
 Enable secure updates and daily backups
 
-📦 Files
-File Name	Description
-setup_passwall2_with_safe_updates_and_backup.sh	Sets up Iran routing rules + secure GeoIP/GeoSite updates + daily backup
-restore_passwall2_backup.sh	Restores backups via interactive menu
-install.sh	One-step installer for all tools
+## 📦 Files
+
+| File Name | Description |
+|-----------|-------------|
+| `setup_passwall2_with_safe_updates_and_backup.sh` | Sets up Iran routing rules + secure GeoIP/GeoSite updates + daily backup |
+| `restore_passwall2_backup.sh` | Restores backups via interactive menu |
+| `install.sh` | One-step installer for all tools |
 
 ⚙️ Manual Usage
 Run Setup
