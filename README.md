@@ -1,70 +1,60 @@
-Automated scripts for smart routing configuration in Passwall2, secure updates of GeoIP/GeoSite databases, and backup/restore of settings on OpenWrt.
+# Passwall2 Routing & Backup Tools 🇮🇷
+
+Automated scripts for smart routing in Passwall2, secure GeoIP/GeoSite updates, and backup/restore on OpenWrt.
 
 ---
 
-## 📦 Files
+## 🚀 Quick Install
 
-| File Name | Description |
-|-----------|-------------|
-| `setup_passwall2_with_safe_updates_and_backup.sh` | Sets up Iran-specific routing rules + securely downloads GeoIP/GeoSite + enables daily backups |
-| `restore_passwall2_backup.sh` | Restores backups with a menu to select from the latest saved versions |
+Run this one-liner on your OpenWrt router:
 
----
-
-## ⚙️ How to Use
-
-### 1. Run the Setup Script
 ```bash
-sh setup_passwall2_with_safe_updates_and_backup.sh
+sh -c 'curl -L -o /tmp/install.sh https://raw.githubusercontent.com/persianblue1/passwall-routing-and-backup/main/install.sh && sh /tmp/install.sh'
 ```
-This script will:
+This will:
 
-Configure routing rules for Iranian IPs and domains
+Download and install all scripts
 
-Securely download GeoIP and GeoSite databases
+Apply initial configuration
 
-Create backups of settings and databases
+Enable secure updates and daily backups
 
-Add a daily cron job for automatic updates and backups
+📦 Files
+File Name	Description
+setup_passwall2_with_safe_updates_and_backup.sh	Sets up Iran routing rules + secure GeoIP/GeoSite updates + daily backup
+restore_passwall2_backup.sh	Restores backups via interactive menu
+install.sh	One-step installer for all tools
 
-Keep only the latest 10 backups to save space
+⚙️ Manual Usage
+Run Setup
 
-Backup path: /root/passwall2_backups/
-Database path: /usr/share/passwall2/
-
-🔁 Restore from Backup
-To restore a previous backup:
 ```bash
-sh restore_passwall2_backup.sh
+sh /usr/share/passwall2/setup_passwall2_with_safe_updates_and_backup.sh
 ```
-A list of available backups will be shown. Enter the number to restore settings and databases. The Passwall2 service will automatically restart.
+Restore Backup
+```bash
+sh /usr/share/passwall2/restore_passwall2_backup.sh
+```
+🧠 Notes
+If GeoIP/GeoSite download fails, previous version is preserved.
 
-🧠 Key Notes
-If GeoIP or GeoSite download fails, the previous version will be preserved to avoid service disruption.
+Direct routing is applied for Iranian IPs and domains.
 
-The following rules are applied to route Iranian traffic directly:
-
-Iranian IPs (GeoIP)
-
-Iranian domains (GeoSite)
-
-Domains ending in .ir (Regex)
-
-All other traffic is routed through the default node (e.g., VPN).
+Only the latest 10 backups are retained.
 
 📜 Requirements
-OpenWrt with luci-app-passwall2 installed
+OpenWrt with luci-app-passwall2
 
-Passwall2 service must be active
+Passwall2 service enabled
 
-Root access to run scripts
+Root access
 
-curl and tar installed (usually available in OpenWrt)
+curl and tar installed
 
 🧰 Developer
 GitHub: persianblue1
 
 Repository: passwall-routing-and-backup
 
-📬 Suggestions or Issues?
-If you have ideas to improve the scripts or encounter any issues, feel free to open an Issue in the repository.
+📬 Feedback & Issues
+Please open an issue in this repository.
